@@ -42,7 +42,7 @@ class TrainValSplitLoader(datasets.ImageFolder):
 
 def get_dataloaders(seed: int=1336, batch_size: int=128):
     """Returns dataloader for train, validation and test data."""
-    np.randon.seed(seed)
+    np.random.seed(seed)
     training_dataset = TrainValSplitLoader(set_type="train", seed=seed,root=TRAIN_DIR, transform=DATA_TRANSFORM)
     validation_dataset = TrainValSplitLoader(set_type="validation", seed=seed, root=TRAIN_DIR, transform=DATA_TRANSFORM)
 
