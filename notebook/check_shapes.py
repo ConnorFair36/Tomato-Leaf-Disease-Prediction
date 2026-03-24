@@ -26,10 +26,11 @@ def _():
 
     from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix, matthews_corrcoef, accuracy_score, precision_score, recall_score, classification_report
     from sklearn import metrics
-    from src.data.read_data import get_dataloaders
+    from src.data.read_data import get_dataloaders, DATA_TRANSFORM
 
     return (
         ConfusionMatrixDisplay,
+        DATA_TRANSFORM,
         F,
         accuracy_score,
         confusion_matrix,
@@ -46,8 +47,8 @@ def _():
 
 
 @app.cell
-def _(get_dataloaders):
-    train_dataset, val_dataset, test_dataset = get_dataloaders()
+def _(DATA_TRANSFORM, get_dataloaders):
+    train_dataset, val_dataset, test_dataset = get_dataloaders(DATA_TRANSFORM)
     return test_dataset, train_dataset
 
 
@@ -79,9 +80,15 @@ def _(mo):
 
 @app.cell
 def _(train_dataset):
-    test = iter(train_dataset)
-    images, label = next(test)
+    test2 = iter(train_dataset)
+    images, label = next(test2)
     return images, label
+
+
+@app.cell
+def _(train_dataset):
+    min(train_dataset.dataset.indexes)
+    return
 
 
 @app.cell
@@ -110,7 +117,8 @@ def _():
 def _(nn):
     # hot garbage
     idiot_model = nn.Sequential(
-        nn.Conv2d(in_channels=3, out_channels=20, kernel_size=3),
+        nn.Conv2d(in_channels=3, out_channels=20, kernel_size=3, padding=1),
+        nn.ReLU(),
         nn.Flatten(),
         nn.Linear(254*254*20, 10)
     )
