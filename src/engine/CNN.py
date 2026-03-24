@@ -43,28 +43,24 @@ model = tf.keras.Sequential([
     tf.keras.layers.Input(shape=(256, 256, 1)),
     #1st convolutional layer
     tf.keras.layers.Conv2D(32, (3, 3), activation='relu', padding='same'),
-    tf.keras.layers.MaxPooling2D(2, 2),
     #2nd convolutional layer
     tf.keras.layers.Conv2D(32, (3, 3), activation='relu', padding='same'),
     tf.keras.layers.MaxPooling2D(2, 2),
     
    #3rd convolutional layer
     tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
-    tf.keras.layers.MaxPooling2D(2, 2),
     #4th convolutional layer
     tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
     tf.keras.layers.MaxPooling2D(2, 2),
     
     #5th convolutional layer
     tf.keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
-    tf.keras.layers.MaxPooling2D(2, 2),
     #6th convolutional layer
     tf.keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
     tf.keras.layers.MaxPooling2D(2, 2),
     
     #7th convolutional layer
     tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'),
-    tf.keras.layers.MaxPooling2D(2, 2),
     #8th convolutional layer
     tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'),
     tf.keras.layers.MaxPooling2D(2, 2),
