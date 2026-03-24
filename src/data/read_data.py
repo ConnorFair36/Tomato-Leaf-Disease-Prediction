@@ -6,8 +6,14 @@ from torch import nn, utils
 from torchvision import transforms, datasets
 from sklearn.model_selection import train_test_split
 
-TRAIN_DIR = "./data/train"
-TEST_DIR = "./data/val"
+from pathlib import Path
+
+_PROJECT_ROOT = Path(__file__).resolve().parents[2]  # read_data.py -> data/ -> src/ -> root
+TRAIN_DIR = _PROJECT_ROOT / "data" / "train"
+TEST_DIR = _PROJECT_ROOT / "data" / "val"
+
+#TRAIN_DIR = "./data/train"
+#TEST_DIR = "./data/val"
 
 DATA_TRANSFORM = transforms.Compose([
     # Flip the images randomly on the horizontal
