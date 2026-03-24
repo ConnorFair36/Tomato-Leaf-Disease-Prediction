@@ -22,18 +22,33 @@ def _():
     import seaborn as sns
     import torch
     import torch.nn.functional as F
+    from torch import nn
 
-    from sklearn.metrics import ConfusionMatrixDisplay
+    from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix, matthews_corrcoef, accuracy_score, precision_score, recall_score, classification_report
     from sklearn import metrics
     from src.data.read_data import get_dataloaders
 
-    return ConfusionMatrixDisplay, get_dataloaders, metrics, mo, plt, torch
+    return (
+        ConfusionMatrixDisplay,
+        F,
+        accuracy_score,
+        confusion_matrix,
+        get_dataloaders,
+        matthews_corrcoef,
+        mo,
+        nn,
+        np,
+        plt,
+        precision_score,
+        recall_score,
+        torch,
+    )
 
 
 @app.cell
 def _(get_dataloaders):
     train_dataset, val_dataset, test_dataset = get_dataloaders()
-    return (train_dataset,)
+    return test_dataset, train_dataset
 
 
 @app.cell(hide_code=True)
@@ -70,8 +85,9 @@ def _(train_dataset):
 
 
 @app.cell
-def _(train_dataset):
-    list(train_dataset.dataset.class_to_idx.keys())[0]
+def _(test_dataset):
+    class_to_idx = test_dataset.dataset.class_to_idx
+    {key[9:]: value for key, value in class_to_idx.items()}
     return
 
 
@@ -85,15 +101,115 @@ def _(images, label, plt, train_dataset):
 
 
 @app.cell
-def _(torch):
-    # use argmax to bring the one-hot encoded output to indexes
-    ex_output = torch.randint(10, (128,)).to(dtype=torch.float)
-    return (ex_output,)
+def _():
+    254*254*20
+    return
 
 
 @app.cell
-def _(ConfusionMatrixDisplay, ex_output, label, metrics, plt, torch):
-    ConfusionMatrixDisplay(metrics.confusion_matrix(ex_output, label.to(dtype=torch.float))).plot()
+def _(nn):
+    # hot garbage
+    idiot_model = nn.Sequential(
+        nn.Conv2d(in_channels=3, out_channels=20, kernel_size=3),
+        nn.Flatten(),
+        nn.Linear(254*254*20, 10)
+    )
+    return (idiot_model,)
+
+
+@app.cell
+def _(idiot_model, images, torch):
+    with torch.no_grad():
+        test_output = idiot_model(images)
+    return (test_output,)
+
+
+@app.cell
+def _(F, test_output, torch):
+    pred = torch.argmax(F.log_softmax(test_output,dim=1), dim=1)
+    return (pred,)
+
+
+@app.cell
+def _(label):
+    label.shape
+    return
+
+
+@app.cell
+def _(confusion_matrix, label, pred):
+    matrix = confusion_matrix(label, pred)
+    return (matrix,)
+
+
+@app.cell
+def _(ConfusionMatrixDisplay, matrix, plt):
+    ConfusionMatrixDisplay(matrix).plot()
+    plt.show()
+    return
+
+
+@app.cell
+def _(label, matthews_corrcoef, pred):
+    matthews_corrcoef(label, pred)
+    return
+
+
+@app.cell
+def _(accuracy_score, label, pred):
+    accuracy_score(label, pred)
+    return
+
+
+@app.cell
+def _(label):
+    (label.numpy() == 1).astype(int)
+    return
+
+
+@app.cell
+def _(label, matthews_corrcoef, pred):
+    for i in range(10):
+        curr_label = (label.numpy() == i).astype(int)
+        curr_pred = (pred.numpy() == i).astype(int)
+        print(f"class {i}: {matthews_corrcoef(curr_label, curr_pred)}")
+    return
+
+
+@app.cell
+def _(label, precision_score, pred):
+    precision_score(label, pred, average=None)
+    return
+
+
+@app.cell
+def _(label, pred, recall_score):
+    recall_score(label, pred, average=None)
+    return
+
+
+@app.cell
+def _(ConfusionMatrixDisplay, matrix, plt):
+    ConfusionMatrixDisplay(matrix).plot()
+    plt.show()
+    return
+
+
+@app.cell
+def _(matrix, np):
+    new_pred = np.array([])
+    new_gt = np.array([])
+    for j in range(matrix.shape[0]):
+        for k in range(matrix.shape[1]):
+            m_value = matrix[j, k]
+            new_pred = np.append(new_pred, np.full((m_value,),k))
+            new_gt = np.append(new_gt, np.full((m_value,),j))
+    return new_gt, new_pred
+
+
+@app.cell
+def _(ConfusionMatrixDisplay, confusion_matrix, new_gt, new_pred, plt):
+    ConfusionMatrixDisplay(confusion_matrix(new_gt, new_pred)).plot()
     plt.show()
     return
 
