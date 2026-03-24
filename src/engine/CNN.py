@@ -39,36 +39,53 @@ for i, class_name in enumerate(class_names):
 
 #CNN model
 model = tf.keras.Sequential([
-    #input layer for grayscale images
     tf.keras.layers.Input(shape=(256, 256, 1)),
-    #1st convolutional layer
+    
+    # Block 1
     tf.keras.layers.Conv2D(32, (3, 3), activation='relu', padding='same'),
-    #2nd convolutional layer
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    
+    # Block 2
     tf.keras.layers.Conv2D(32, (3, 3), activation='relu', padding='same'),
+    tf.keras.layers.BatchNormalization(),
     tf.keras.layers.MaxPooling2D(2, 2),
     
-   #3rd convolutional layer
+    # Block 3
     tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
-    #4th convolutional layer
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    
+    # Block 4
     tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same'),
+    tf.keras.layers.BatchNormalization(),
     tf.keras.layers.MaxPooling2D(2, 2),
     
-    #5th convolutional layer
+    # Block 5
     tf.keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
-    #6th convolutional layer
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    
+    # Block 6
     tf.keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
+    tf.keras.layers.BatchNormalization(),
     tf.keras.layers.MaxPooling2D(2, 2),
     
-    #7th convolutional layer
+    # Block 7
     tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'),
-    #8th convolutional layer
-    tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'),
+    tf.keras.layers.BatchNormalization(),
     tf.keras.layers.MaxPooling2D(2, 2),
     
-    #flatten & dense layers
+    # Block 8
+    tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.MaxPooling2D(2, 2),
+    
+    # Flatten: 1×1×256 = 256
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(512, activation='relu'),
-    tf.keras.layers.Dropout(0.5),  #attempt reduce overfitting
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.Dropout(0.5),
     tf.keras.layers.Dense(num_classes, activation='softmax')
 ])
 
