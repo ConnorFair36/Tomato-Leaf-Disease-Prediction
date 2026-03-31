@@ -1,30 +1,25 @@
 # Need to use pytorch
 # indent needed 
 import torch
+from torch import nn, optim
 from torch.utils.data import DataLoader
 
-def train_model(model,
-                train_data,
-                val_data,
-                epochs,
-                learning_rate,
-                loss_fn,
-                optimizer_class,
-                batch_size=32): # check batch sixe before use 
-
+def train_model(model: nn.Module,
+                train_loader: DataLoader,
+                val_loader: DataLoader,
+                epochs: int,
+                loss_fn: nn.Module,
+                optimizer: optim.Optimizer) -> list[list, list]: 
+    """Trains a model and returns a list of the training and validation losses over training."""
     # Decide whether to use GPU or CPU
     if torch.cuda.is_available():
         device = "cuda"
+    #elif torch.mps.is_available():
+    #    device = "mps"
     else:
         device = "cpu"
-        
-    # Turn datasets into DataLoader objects
-    train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
-    val_loader = DataLoader(val_data, batch_size=batch_size)
 
-    # Optimizer for the learning rate 
-    optimizer = optimizer_class(model.parameters(), lr=learning_rate)
-
+    losses = [[],[]]
     # Training loop
     for epoch in range(epochs):
         print(f"\n--- Epoch {epoch+1}/{epochs} ---")
@@ -45,13 +40,11 @@ def train_model(model,
 
             total_train_loss += loss.item()
 
-        avg_train_loss = total_train_loss / len(train_loader)
+        losses[0].append(total_train_loss / len(train_loader))
 
         # Validation step --> testing 
         model.eval()  # put model in evaluation mode
         total_val_loss = 0
-        correct = 0
-        total = 0
 
         with torch.no_grad():  # no gradients needed for validation
             for images, labels in val_loader:
@@ -62,13 +55,8 @@ def train_model(model,
                 loss = loss_fn(outputs, labels)
                 total_val_loss += loss.item()
 
-                # Calculate accuracy
-                _, predicted = torch.max(outputs, 1)
-                correct += (predicted == labels).sum().item()
-                total += labels.size(0)
+        losses[1].append(total_val_loss / len(val_loader))
+        return losses
+        
 
-        avg_val_loss = total_val_loss / len(val_loader)
-        accuracy = correct / total
-
-    return model
 
