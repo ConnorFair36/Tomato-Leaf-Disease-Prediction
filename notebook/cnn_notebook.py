@@ -36,7 +36,7 @@ def _(DATA_TRANSFORM, get_dataloaders):
 def _(CNN, nn, optim):
     model = CNN(num_classes=10)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001) #learning rate 
+    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4) #learning rate 
     return criterion, model, optimizer
 
 
@@ -63,7 +63,7 @@ def _(criterion, model, optimizer, train_loader):
 
 @app.cell
 def _(model, torch):
-    torch.save(model, "./CNN_model.pth")
+    torch.save(model.state_dict(), "../src/weights/CNN_model_weights.pth")
     return
 
 
