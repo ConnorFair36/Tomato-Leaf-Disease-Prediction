@@ -28,15 +28,21 @@ class TrainValSplitLoader(datasets.ImageFolder):
         # yell at the user for being wrong
         if set_type not in ["train", "validation"]:
             raise ValueError("set_type must be one of the following: [train, validation]")
-        length = 10_000
+        length = len(self.samples)
         all_indexes = list(range(length))
-        class_distribution = [i % length//n_classes for i in range(length)]
-        train_size = train_val_split[0]/(train_val_split[0] + train_val_split[1])
-        train_idx, validation_idx = train_test_split(all_indexes, train_size=train_size, stratify=class_distribution, random_state=seed)
-        if set_type == "train":
-            self.indexes = train_idx
-        else:
-            self.indexes = validation_idx
+      
+        class_distribution = [s[1] for s in self.samples]
+
+        train_size = train_val_split[0] / (train_val_split[0] + train_val_split[1])
+
+        train_idx, validation_idx = train_test_split(
+            all_indexes,
+            train_size=train_size,
+            stratify=class_distribution,
+            random_state=seed
+        )
+
+        self.indexes = train_idx if set_type == "train" else validation_idx
 
     def __len__(self):
         return len(self.indexes)

@@ -1,9 +1,22 @@
 {
   "version": "1",
   "metadata": {
-    "marimo_version": "0.20.1"
+    "marimo_version": "0.20.2"
   },
   "cells": [
+    {
+      "id": "bkHC",
+      "code_hash": "4ef3b2a089c39c36bf3b53017adeb92f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"the-dataset-shape-layout\">The Dataset Shape Layout</h1>\n<span class=\"paragraph\">Input:</span>\n<ul>\n<li>(batch size, RGB, Width, Height)</li>\n</ul>\n<span class=\"paragraph\">Output:</span>\n<ul>\n<li>(batch size)</li>\n<li>Each is an integer from 0 to 9</li>\n<li>\n<span class=\"paragraph\">The index to label mapping:</span>\n<ul>\n<li>Bacterial_spot: 0</li>\n<li>Early_blight: 1</li>\n<li>Late_blight: 2</li>\n<li>Leaf_Mold: 3</li>\n<li>Septoria_leaf_spot: 4</li>\n<li>Spider_mitesTwo-spotted_spider_mite\": 5</li>\n<li>Target_Spot: 6</li>\n<li>Tomato_Yellow_Leaf_Curl_Virus: 7</li>\n<li>Tomato_mosaic_virus: 8</li>\n<li>healthy: 9</li>\n</ul>\n</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
     {
       "id": "Hbol",
       "code_hash": "654e81467ac7106fb3020336e5712403",
@@ -44,30 +57,24 @@
       "console": []
     },
     {
-      "id": "bkHC",
-      "code_hash": "4ef3b2a089c39c36bf3b53017adeb92f",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"the-dataset-shape-layout\">The Dataset Shape Layout</h1>\n<span class=\"paragraph\">Input:</span>\n<ul>\n<li>(batch size, RGB, Width, Height)</li>\n</ul>\n<span class=\"paragraph\">Output:</span>\n<ul>\n<li>(batch size)</li>\n<li>Each is an integer from 0 to 9</li>\n<li>\n<span class=\"paragraph\">The index to label mapping:</span>\n<ul>\n<li>Bacterial_spot: 0</li>\n<li>Early_blight: 1</li>\n<li>Late_blight: 2</li>\n<li>Leaf_Mold: 3</li>\n<li>Septoria_leaf_spot: 4</li>\n<li>Spider_mitesTwo-spotted_spider_mite\": 5</li>\n<li>Target_Spot: 6</li>\n<li>Tomato_Yellow_Leaf_Curl_Virus: 7</li>\n<li>Tomato_mosaic_virus: 8</li>\n<li>healthy: 9</li>\n</ul>\n</li>\n</ul></span>"
-          }
-        }
-      ],
-      "console": []
-    },
-    {
       "id": "lEQa",
       "code_hash": "3847b41e566a7b3a08c835180e452213",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "list index out of range",
+          "traceback": []
         }
       ],
-      "console": []
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\oscup\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\myshell-rHMwiQ_w-py3.12\\Lib\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">138</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"n\">exec</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\oscup\\AppData\\Local\\Temp\\marimo_21132\\__marimo__cell_lEQa_.py&quot;</span>, line <span class=\"m\">2</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">images</span><span class=\"p\">,</span> <span class=\"n\">label</span> <span class=\"o\">=</span> <span class=\"nb\">next</span><span class=\"p\">(</span><span class=\"n\">test2</span><span class=\"p\">)</span>\n<span class=\"w\">                    </span><span class=\"pm\">^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\oscup\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\myshell-rHMwiQ_w-py3.12\\Lib\\site-packages\\torch\\utils\\data\\dataloader.py&quot;</span>, line <span class=\"m\">741</span>, in <span class=\"n\">__next__</span>\n<span class=\"w\">    </span><span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_next_data</span><span class=\"p\">()</span>\n<span class=\"w\">           </span><span class=\"pm\">^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\oscup\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\myshell-rHMwiQ_w-py3.12\\Lib\\site-packages\\torch\\utils\\data\\dataloader.py&quot;</span>, line <span class=\"m\">801</span>, in <span class=\"n\">_next_data</span>\n<span class=\"w\">    </span><span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_dataset_fetcher</span><span class=\"o\">.</span><span class=\"n\">fetch</span><span class=\"p\">(</span><span class=\"n\">index</span><span class=\"p\">)</span>  <span class=\"c1\"># may raise StopIteration</span>\n<span class=\"w\">           </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\oscup\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\myshell-rHMwiQ_w-py3.12\\Lib\\site-packages\\torch\\utils\\data\\_utils\\fetch.py&quot;</span>, line <span class=\"m\">54</span>, in <span class=\"n\">fetch</span>\n<span class=\"w\">    </span><span class=\"n\">data</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">dataset</span><span class=\"p\">[</span><span class=\"n\">idx</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">idx</span> <span class=\"ow\">in</span> <span class=\"n\">possibly_batched_index</span><span class=\"p\">]</span>\n<span class=\"w\">            </span><span class=\"pm\">~~~~~~~~~~~~^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\oscup\\OneDrive\\Desktop\\SCHOOL\\VCU\\STAT 421\\Tomato-Leaf-Disease-Prediction\\src\\data\\read_data.py&quot;</span>, line <span class=\"m\">47</span>, in <span class=\"n\">__getitem__</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"nb\">super</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"fm\">__getitem__</span><span class=\"p\">(</span><span class=\"n\">index</span><span class=\"p\">)</span>\n<span class=\"w\">           </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\oscup\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\myshell-rHMwiQ_w-py3.12\\Lib\\site-packages\\torchvision\\datasets\\folder.py&quot;</span>, line <span class=\"m\">244</span>, in <span class=\"n\">__getitem__</span>\n<span class=\"w\">    </span><span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"n\">target</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">samples</span><span class=\"p\">[</span><span class=\"n\">index</span><span class=\"p\">]</span>\n<span class=\"w\">                   </span><span class=\"pm\">~~~~~~~~~~~~^^^^^^^</span>\n<span class=\"gr\">IndexError</span>: <span class=\"n\">list index out of range</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
     },
     {
       "id": "PKri",
@@ -85,109 +92,235 @@
     {
       "id": "Xref",
       "code_hash": "7c4c51d0c7c5da34387ad836bbe363f5",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"Bacterial_spot\": 0, \"Early_blight\": 1, \"Late_blight\": 2, \"Leaf_Mold\": 3, \"Septoria_leaf_spot\": 4, \"Spider_mites Two-spotted_spider_mite\": 5, \"Target_Spot\": 6, \"Tomato_Yellow_Leaf_Curl_Virus\": 7, \"Tomato_mosaic_virus\": 8, \"healthy\": 9}"
+          }
+        }
+      ],
       "console": []
     },
     {
       "id": "SFPL",
       "code_hash": "6a091069222358c848281a8a23947d29",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
       "console": []
     },
     {
       "id": "BYtC",
       "code_hash": "ec34925bb6c980b5c6fdbc8ec1672e6c",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>1290320</pre>"
+          }
+        }
+      ],
       "console": []
     },
     {
       "id": "RGSE",
       "code_hash": "c3f86a4dbda95ce0988990da7fdecb0c",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
       "console": []
     },
     {
       "id": "Kclp",
       "code_hash": "54197c8ddd37e4ecc0aa016ef7e6f4f7",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
       "console": []
     },
     {
       "id": "emfo",
       "code_hash": "5b18b1da65c53d9ae7ec07ca13adcb85",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
       "console": []
     },
     {
       "id": "Hstk",
       "code_hash": "1c3bbbb55780ad951685ac32eb280a39",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
       "console": []
     },
     {
       "id": "nWHF",
       "code_hash": "1c81c623b7a2f8b31f7a7079972a7527",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "ulZA",
-      "code_hash": "6708cb6c947389f3d9b6bbe92c62fc39",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "ZHCJ",
-      "code_hash": "9149a396accbd0af0e290bc91efaff6e",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "ROlb",
-      "code_hash": "3e096b9b7301a4efe3d0f1250c52ad06",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "qnkX",
-      "code_hash": "c7c625b5d71eba6b322c7c02fe2b2cf4",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "TqIu",
-      "code_hash": "0b1827eb1011224d3c2d141ee110d816",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "Vxnm",
-      "code_hash": "962f091d2873c2dcd67dccce13df1c11",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "DnEU",
-      "code_hash": "ad14d17ec04bd5e162002e03b2322140",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "ecfG",
-      "code_hash": "c9c73ce67ab362df758cfca8e1a87372",
-      "outputs": [],
-      "console": []
-    },
-    {
-      "id": "Pvdt",
-      "code_hash": "e3fe618ec906accbf20f670b033d2207",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
       "console": []
     },
     {
       "id": "iLit",
       "code_hash": "6708cb6c947389f3d9b6bbe92c62fc39",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "9149a396accbd0af0e290bc91efaff6e",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "3e096b9b7301a4efe3d0f1250c52ad06",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "c7c625b5d71eba6b322c7c02fe2b2cf4",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "0b1827eb1011224d3c2d141ee110d816",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "962f091d2873c2dcd67dccce13df1c11",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "ad14d17ec04bd5e162002e03b2322140",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "6708cb6c947389f3d9b6bbe92c62fc39",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "c9c73ce67ab362df758cfca8e1a87372",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "e3fe618ec906accbf20f670b033d2207",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (IndexError): ",
+          "traceback": []
+        }
+      ],
       "console": []
     }
   ]
