@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.20.2"
+__generated_with = "0.21.1"
 app = marimo.App(width="medium")
 
 
@@ -19,8 +19,9 @@ def _():
     import torch.optim as optim
     from torch.utils.data import DataLoader
     from torchvision import transforms
-    from src.engine.CNN import CNN
-    from src.data.read_data import get_dataloaders, DATA_TRANSFORM
+    from src.models.CNN import CNN
+    from src.data.read_data import get_dataloaders
+    from src.data.preprocessors import DATA_TRANSFORM, DATA_TRANSFORM_DOWNSAMPLE
 
     return CNN, DATA_TRANSFORM, get_dataloaders, nn, optim, torch
 
