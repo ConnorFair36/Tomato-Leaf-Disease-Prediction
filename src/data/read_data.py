@@ -46,7 +46,7 @@ class TrainValSplitLoader(datasets.ImageFolder):
         index = self.indexes[index]
         return super().__getitem__(index)
 
-def get_dataloaders(transformation, seed: int=1336, batch_size: int=128):
+def get_dataloaders(transformation, seed: int=1336, batch_size: int=128, n_workers: int=0):
     """Returns dataloader for train, validation and test data."""
     np.random.seed(seed)
     training_dataset = TrainValSplitLoader(set_type="train", seed=seed,root=TRAIN_DIR, transform=transformation)
@@ -56,9 +56,9 @@ def get_dataloaders(transformation, seed: int=1336, batch_size: int=128):
                                  transform=transformation,
                                  target_transform=None)
     
-    training_dataloader = utils.data.DataLoader(training_dataset, batch_size=batch_size, shuffle=True)
-    validation_dataloader = utils.data.DataLoader(validation_dataset, batch_size=batch_size, shuffle=True)
-    test_dataloader = utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=True)
+    training_dataloader = utils.data.DataLoader(training_dataset, batch_size=batch_size, shuffle=True, num_workers=n_workers)
+    validation_dataloader = utils.data.DataLoader(validation_dataset, batch_size=batch_size, shuffle=True, num_workers=n_workers)
+    test_dataloader = utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=True, num_workers=n_workers)
     
     return training_dataloader, validation_dataloader, test_dataloader
 
