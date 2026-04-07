@@ -1,0 +1,85 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.20.1"
+  },
+  "cells": [
+    {
+      "id": "Uuvx",
+      "code_hash": "654e81467ac7106fb3020336e5712403",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "0c73d586ce440ce727404981f525d092",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "uFXX",
+      "code_hash": "cbce1a75190514591aa39c9a84d82d72",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vIIp",
+      "code_hash": "ce54149f5372d79a970896cd8afadfb1",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "interruption",
+          "evalue": "This cell was interrupted and needs to be re-run",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "\n--- Epoch 1/1 ---\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x106acade0>\nTraceback (most recent call last):\n  File \"/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py\", line 1707, in __del__\n    self._shutdown_workers()\n  File \"/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/utils/data/dataloader.py\", line 1671, in _shutdown_workers\n    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)\n  File \"/Users/connorfair/.local/share/uv/python/cpython-3.13.9-macos-aarch64-none/lib/python3.13/multiprocessing/process.py\", line 149, in join\n    res = self._popen.wait(timeout)\n  File \"/Users/connorfair/.local/share/uv/python/cpython-3.13.9-macos-aarch64-none/lib/python3.13/multiprocessing/popen_fork.py\", line 41, in wait\n    if not wait([self.sentinel], timeout):\n  File \"/Users/connorfair/.local/share/uv/python/cpython-3.13.9-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py\", line 1148, in wait\n    ready = selector.select(timeout)\n  File \"/Users/connorfair/.local/share/uv/python/cpython-3.13.9-macos-aarch64-none/lib/python3.13/selectors.py\", line 398, in select\n    fd_event_list = self._selector.poll(timeout)\n  File \"/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/marimo/_runtime/handlers.py\", line 49, in interrupt_handler\n    raise MarimoInterrupt\nKeyboardInterrupt: \n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/var/folders/9b/6hrd6zs14yv9jkzch0hlsjkw0000gn/T/marimo_35345/__marimo__cell_vIIp_.py&quot;</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">train_model</span><span class=\"p\">(</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"n\">model</span><span class=\"o\">=</span><span class=\"n\">model</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">4</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">optimizer</span><span class=\"o\">=</span><span class=\"n\">optim</span><span class=\"o\">.</span><span class=\"n\">Adam</span><span class=\"p\">(</span><span class=\"n\">params</span><span class=\"o\">=</span><span class=\"n\">model</span><span class=\"o\">.</span><span class=\"n\">parameters</span><span class=\"p\">())</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/src/engine/train_loop.py&quot;</span>, line <span class=\"m\">38</span>, in <span class=\"n\">train_model</span>\n<span class=\"w\">    </span><span class=\"n\">loss</span><span class=\"o\">.</span><span class=\"n\">backward</span><span class=\"p\">()</span>                <span class=\"c1\"># compute gradients</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~~~^^</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/_tensor.py&quot;</span>, line <span class=\"m\">630</span>, in <span class=\"n\">backward</span>\n<span class=\"w\">    </span><span class=\"n\">torch</span><span class=\"o\">.</span><span class=\"n\">autograd</span><span class=\"o\">.</span><span class=\"n\">backward</span><span class=\"p\">(</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">gradient</span><span class=\"p\">,</span> <span class=\"n\">retain_graph</span><span class=\"p\">,</span> <span class=\"n\">create_graph</span><span class=\"p\">,</span> <span class=\"n\">inputs</span><span class=\"o\">=</span><span class=\"n\">inputs</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/autograd/__init__.py&quot;</span>, line <span class=\"m\">364</span>, in <span class=\"n\">backward</span>\n<span class=\"w\">    </span><span class=\"n\">_engine_run_backward</span><span class=\"p\">(</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"n\">tensors</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">5</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">accumulate_grad</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/autograd/graph.py&quot;</span>, line <span class=\"m\">865</span>, in <span class=\"n\">_engine_run_backward</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">Variable</span><span class=\"o\">.</span><span class=\"n\">_execution_engine</span><span class=\"o\">.</span><span class=\"n\">run_backward</span><span class=\"p\">(</span>  <span class=\"c1\"># Calls into the C++ engine to run the backward pass</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span>    <span class=\"n\">t_outputs</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>  <span class=\"c1\"># Calls into the C++ engine to run the backward pass</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/autograd/function.py&quot;</span>, line <span class=\"m\">317</span>, in <span class=\"n\">apply</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">user_fn</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py&quot;</span>, line <span class=\"m\">2338</span>, in <span class=\"n\">backward</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">impl_fn</span><span class=\"p\">()</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py&quot;</span>, line <span class=\"m\">2324</span>, in <span class=\"n\">impl_fn</span>\n<span class=\"w\">    </span><span class=\"n\">out</span> <span class=\"o\">=</span> <span class=\"n\">CompiledFunction</span><span class=\"o\">.</span><span class=\"n\">_backward_impl</span><span class=\"p\">(</span><span class=\"n\">ctx</span><span class=\"p\">,</span> <span class=\"n\">all_args</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py&quot;</span>, line <span class=\"m\">2494</span>, in <span class=\"n\">_backward_impl</span>\n<span class=\"w\">    </span><span class=\"n\">out</span> <span class=\"o\">=</span> <span class=\"n\">call_func_at_runtime_with_args</span><span class=\"p\">(</span>\n<span class=\"w\">    </span>    <span class=\"n\">CompiledFunction</span><span class=\"o\">.</span><span class=\"n\">compiled_bw</span><span class=\"p\">,</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">2</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">disable_amp</span><span class=\"o\">=</span><span class=\"n\">disable_amp</span><span class=\"p\">,</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/_functorch/_aot_autograd/utils.py&quot;</span>, line <span class=\"m\">134</span>, in <span class=\"n\">call_func_at_runtime_with_args</span>\n<span class=\"w\">    </span><span class=\"n\">out</span> <span class=\"o\">=</span> <span class=\"n\">normalize_as_list</span><span class=\"p\">(</span><span class=\"n\">f</span><span class=\"p\">(</span><span class=\"n\">args</span><span class=\"p\">))</span>\n<span class=\"w\">                            </span><span class=\"pm\">~^^^^^^</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/_dynamo/eval_frame.py&quot;</span>, line <span class=\"m\">1181</span>, in <span class=\"n\">_fn</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">fn</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/torch/_inductor/output_code.py&quot;</span>, line <span class=\"m\">638</span>, in <span class=\"n\">__call__</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">current_callable</span><span class=\"p\">(</span><span class=\"n\">inputs</span><span class=\"p\">)</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~~^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/var/folders/9b/6hrd6zs14yv9jkzch0hlsjkw0000gn/T/torchinductor_connorfair/r4/cr4oy5w22xea52gv54immnwwgbzparuunbyxutiln6yyoepqepbg.py&quot;</span>, line <span class=\"m\">2169</span>, in <span class=\"n\">call</span>\n<span class=\"w\">    </span><span class=\"n\">cpp_fused_convolution_backward_max_pool2d_with_indices_max_pool2d_with_indices_backward_native_batch_norm_backward_threshold_backward_8</span><span class=\"p\">(</span><span class=\"n\">buf78</span><span class=\"p\">,</span> <span class=\"n\">getitem_3</span><span class=\"p\">,</span> <span class=\"n\">buf71</span><span class=\"p\">,</span> <span class=\"n\">convolution</span><span class=\"p\">,</span> <span class=\"n\">unsqueeze_122</span><span class=\"p\">,</span> <span class=\"n\">squeeze_1</span><span class=\"p\">,</span> <span class=\"n\">primals_7</span><span class=\"p\">,</span> <span class=\"n\">buf74</span><span class=\"p\">,</span> <span class=\"n\">buf75</span><span class=\"p\">,</span> <span class=\"n\">buf76</span><span class=\"p\">,</span> <span class=\"n\">buf77</span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Users/connorfair/421_Tomato_Leaf/.venv/lib/python3.13/site-packages/marimo/_runtime/handlers.py&quot;</span>, line <span class=\"m\">49</span>, in <span class=\"n\">interrupt_handler</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"n\">MarimoInterrupt</span>\n<span class=\"gr\">KeyboardInterrupt</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "nJDV",
+      "code_hash": null,
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
