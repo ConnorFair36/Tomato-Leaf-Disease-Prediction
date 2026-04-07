@@ -56,7 +56,10 @@ def train_model(model: nn.Module,
                 total_val_loss += loss.item()
 
         losses[1].append(total_val_loss / len(val_loader))
-        return losses
+        print(f"Training loss: {losses[0][-1]:.4f}")
+        print(f"Validation loss: {losses[1][-1]:.4f}")
+        
+    return losses
         
 
 
