@@ -1,0 +1,80 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.20.1"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "654e81467ac7106fb3020336e5712403",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "3a90e6c6bf9cf3f6bc29a94d33676c77",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "5fcaca2c3dc08196bec8af2c58997992",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "e84be4bb219ae12c87d553e3f4ea554f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "12a727ed82288f6de03c71249253794d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "--training model_0 on 7 epocks---\n---Finished Model 0 on 0 Current loss: 18.524634838104248---\n--training model_1 on 7 epocks---\n---Finished Model 1 on 0 Current loss: 18.500823974609375---\n--training model_2 on 7 epocks---\n---Finished Model 2 on 0 Current loss: 18.511358499526978---\n--training model_3 on 7 epocks---\n---Finished Model 3 on 0 Current loss: 18.542704582214355---\n--training model_4 on 7 epocks---\n---Finished Model 4 on 0 Current loss: 18.483662605285645---\n--training model_5 on 7 epocks---\n---Finished Model 5 on 0 Current loss: 18.499221801757812---\n--training model_6 on 7 epocks---\n---Finished Model 6 on 0 Current loss: 18.450613260269165---\n--training model_7 on 7 epocks---\n---Finished Model 7 on 0 Current loss: 18.473538637161255---\n--training model_4 on 6 epocks---\n---Finished Model 4 on 1 Current loss: 18.49802041053772---\n--training model_5 on 6 epocks---\n---Finished Model 5 on 1 Current loss: 18.517314434051514---\n--training model_6 on 6 epocks---\n---Finished Model 6 on 1 Current loss: 18.447062492370605---\n--training model_7 on 6 epocks---\n---Finished Model 7 on 1 Current loss: 18.475157022476196---\n--training model_6 on 12 epocks---\n---Finished Model 6 on 2 Current loss: 18.444995880126953---\n--training model_7 on 12 epocks---\n---Finished Model 7 on 2 Current loss: 18.483750581741333---\n--training model_6 on 25 epocks---\n---Finished Model 6 on 3 Current loss: 18.430874347686768---\nBest Model: model_6\n  Error:18.430874347686768\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    }
+  ]
+}
