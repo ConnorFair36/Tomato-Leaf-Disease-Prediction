@@ -4,6 +4,7 @@ from torch.utils.data import DataLoader
 import itertools
 import math
 from ..data.read_data import get_dataloaders
+from tqdm.auto import tqdm
 
 def train_model(model: nn.Module,
                 train_loader: DataLoader,
@@ -23,38 +24,42 @@ def train_model(model: nn.Module,
     losses = [[],[]]
     # Training loop
     for epoch in range(epochs):
-        print(f"\n--- Epoch {epoch+1}/{epochs} ---")
+        #print(f"\n--- Epoch {epoch+1}/{epochs} ---")
 
         model.train()  # put model in training mode
         total_train_loss = 0
 
         # Training step 
-        for images, labels in train_loader:
-            images = images.to(device)
-            labels = labels.to(device)
+        with tqdm(train_loader, unit="batch") as ttrain:
+            for images, labels in ttrain:
+                ttrain.set_description(f"Epoch {epoch}")
+                images = images.to(device)
+                labels = labels.to(device)
 
-            optimizer.zero_grad()          # reset gradients
-            outputs = model(images)        # forward pass
-            loss = loss_fn(outputs, labels) # compute loss
-            loss.backward()                # compute gradients
-            optimizer.step()               # update weights
+                optimizer.zero_grad()          # reset gradients
+                outputs = model(images)        # forward pass
+                loss = loss_fn(outputs, labels) # compute loss
+                loss.backward()                # compute gradients
+                optimizer.step()               # update weights
 
-            total_train_loss += loss.item()
+                total_train_loss += loss.item()
 
-        losses[0].append(total_train_loss / len(train_loader))
+            losses[0].append(total_train_loss / len(train_loader))
 
         # Validation step --> testing 
         model.eval()  # put model in evaluation mode
         total_val_loss = 0
 
-        with torch.no_grad():  # no gradients needed for validation
-            for images, labels in val_loader:
-                images = images.to(device)
-                labels = labels.to(device)
+        with tqdm(val_loader, unit="batch") as vtrain:
+            with torch.no_grad():  # no gradients needed for validation
+                for images, labels in vtrain:
+                    vtrain.set_description(f"Epoch {epoch} validation")
+                    images = images.to(device)
+                    labels = labels.to(device)
 
-                outputs = model(images)
-                loss = loss_fn(outputs, labels)
-                total_val_loss += loss.item()
+                    outputs = model(images)
+                    loss = loss_fn(outputs, labels)
+                    total_val_loss += loss.item()
 
         losses[1].append(total_val_loss / len(val_loader))
         print(f"Training loss: {losses[0][-1]:.4f}")
@@ -84,29 +89,33 @@ def _train_model(model, training_dataset, budget, loss_fun, optimizer):
         model.train()  # put model in training mode
 
         # Training step 
-        for images, labels in training_dataset:
-            images = images.to(device)
-            labels = labels.to(device)
+        with tqdm(training_dataset, unit="batch") as ttrain:
+            for images, labels in ttrain:
+                ttrain.set_description(f"Epoch {epoch}")
+                images = images.to(device)
+                labels = labels.to(device)
 
-            optimizer.zero_grad()          # reset gradients
-            outputs = model(images)        # forward pass
-            loss = loss_fun(outputs, labels) # compute loss
-            loss.backward()                # compute gradients
-            optimizer.step()               # update weights
+                optimizer.zero_grad()          # reset gradients
+                outputs = model(images)        # forward pass
+                loss = loss_fun(outputs, labels) # compute loss
+                loss.backward()                # compute gradients
+                optimizer.step()               # update weights
 
 def _val_model(model, validation_dataset, loss_fun) -> float:
     device = str(next(model.parameters()).device)
     model.eval()  # put model in evaluation mode
     total_val_loss = 0
 
-    with torch.no_grad():  # no gradients needed for validation
-        for images, labels in validation_dataset:
-            images = images.to(device)
-            labels = labels.to(device)
-    
-            outputs = model(images)
-            loss = loss_fun(outputs, labels)
-            total_val_loss += loss.item()
+    with tqdm(validation_dataset, unit="batch") as vtrain:
+        with torch.no_grad():  # no gradients needed for validation
+            for images, labels in vtrain:
+                vtrain.set_description(f"Validation")
+                images = images.to(device)
+                labels = labels.to(device)
+
+                outputs = model(images)
+                loss = loss_fun(outputs, labels)
+                total_val_loss += loss.item()
     return total_val_loss
 
 # Source: https://arxiv.org/abs/1502.07943
