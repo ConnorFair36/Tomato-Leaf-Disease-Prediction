@@ -28,6 +28,37 @@ uv init
 uv add -r requirements.txt
 ```
 
+### 3. Download the dataset
+
+Get the dataset from [here](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf) and place the train and validation folders into the data file. The python script that comes with this dataset can be thrown away because we will be using pytorch instead of tensorflow.
+
+```
+Tomato-Leaf-Disease-Prediction/
+└── data/
+    ├── train/
+    │   ├── Tomato_Bacterial_spot/
+    │   ├── Tomato_Early_blight/
+    │   ├── Tomato_healthy/
+    │   ├── Tomato_Late_blight/
+    │   ├── Tomato_Leaf_Mold/
+    │   ├── Tomato_Septoria_leaf_spot/
+    │   ├── Tomato_Spider_mites_Two-spotted_spider_mite/
+    │   ├── Tomato__Target_Spot/
+    │   ├── Tomato__Tomato_mosaic_virus/
+    │   └── Tomato__Tomato_YellowLeaf__Curl_Virus/
+    └── val/
+        ├── Tomato_Bacterial_spot/
+        ├── Tomato_Early_blight/
+        ├── Tomato_healthy/
+        ├── Tomato_Late_blight/
+        ├── Tomato_Leaf_Mold/
+        ├── Tomato_Septoria_leaf_spot/
+        ├── Tomato_Spider_mites_Two-spotted_spider_mite/
+        ├── Tomato__Target_Spot/
+        ├── Tomato__Tomato_mosaic_virus/
+        └── Tomato__Tomato_YellowLeaf__Curl_Virus/
+```
+
 ### Training
 
 >  A dedicated training script with command-line arguments is coming soon.
