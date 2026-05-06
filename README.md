@@ -1,17 +1,56 @@
-# Tomato-Leaf-Disease-Prediction
+# Tomato Leaf Disease Prediction
+
+A deep learning model that classifies tomato plant diseases from leaf images, built with PyTorch.
+
+## Introduction
+
+More than 25% of total tomato crop production is lost annually due to plant diseases, which significantly reduce yields and degrade crop quality. Human identification of these diseases can be slow and error-prone. This project trains a neural network to identify tomato leaf diseases from a single image, enabling faster and more consistent diagnosis.
+
+## Data
+
+The model is trained on [this dataset](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf) from Kaggle. Rather than using the default train/validation split the dataset ships with, our code re-splits the data into training, validation, and test sets for more robust evaluation.
+
+## Usage
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ConnorFair36/Tomato-Leaf-Disease-Prediction
+cd Tomato-Leaf-Disease-Prediction
+```
+
+### 2. Set up your Python environment
+
+This example uses [uv](https://github.com/astral-sh/uv), but any Python environment manager will work.
+
+```bash
+uv init
+uv add -r requirements.txt
+```
+
+### Training
+
+>  A dedicated training script with command-line arguments is coming soon.
+
+In the meantime, the training logic can be found in the project notebooks.
+
+### Inference
+
+>  A dedicated inference script for running the model on the test or validation sets is coming soon.
 
 ## Resources
 
-### Programming
+Resources used to learn PyTorch, organize the project, and collect data.
 
-[PyTorch Basics](https://www.learnpytorch.io)
+| Topic | Link |
+|---|---|
+| PyTorch fundamentals | [learnpytorch.io](https://www.learnpytorch.io) |
+| Introduction to neural networks (Chapter 1) | [The LM Book](https://thelmbook.com) |
+| PyTorch project organization | [Medium — Good Practices for Deep Learning](https://medium.com/@zhangx9411/the-guide-to-pytorch-good-practices-for-deep-learning-bd9e90bf8c0e) |
+| Dataset | [Tomato Leaf Dataset — Kaggle](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf) |
 
-[Introduction to NN (look at chapter 1)](https://thelmbook.com)
+## References
 
-[PyTorch Project Organization](https://medium.com/@zhangx9411/the-guide-to-pytorch-good-practices-for-deep-learning-bd9e90bf8c0e)
+Trivedi, N. K., Gautam, V., Anand, A., Aljahdali, H. M., Villar, S. G., Anand, D., Goyal, N., & Kadry, S. (2021). Early Detection and Classification of Tomato Leaf Disease Using High-Performance Deep Neural Network. *Sensors*, 21(23), 7987. https://doi.org/10.3390/s21237987
 
-### Dataset
-
-[Tomato Leaf Dataset](https://www.kaggle.com/datasets/kaustubhb999/tomatoleaf)
-
-[Article about the Dataset](https://pmc.ncbi.nlm.nih.gov/articles/PMC8659659/)
+Kantor, L., & Blazejczyk, A. (2021). *Food Availability and Consumption*. USDA Economic Research Service. https://www.ers.usda.gov/data-products/ag-and-food-statistics-charting-the-essentials/food-availability-and-consumption
