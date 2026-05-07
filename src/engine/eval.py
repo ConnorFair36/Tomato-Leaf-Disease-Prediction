@@ -4,13 +4,13 @@ from torch import nn
 
 from sklearn.metrics import confusion_matrix, matthews_corrcoef, accuracy_score, precision_score, recall_score
 
-def evaluate_model(model: torch.Module, dataset: torch.utils.data.dataloader.DataLoader) -> dict:
+def evaluate_model(model: nn.Module, dataset: torch.utils.data.dataloader.DataLoader) -> dict:
     """Returns a dictionary containing all of the values used for evaluating model performance based on the given dataset."""
     # get the device that the model is currently on
     device = model.parameters().__next__().device
     class_to_idx = dataset.dataset.class_to_idx
     idx_to_class = {value: key[9:] for key, value in class_to_idx.items()}
-    matrix = np.zeros((10,10))
+    matrix = np.zeros((10,10), dtype=np.int32)
     # loop throught the given evaluation dataset
     for images, ground_truth in dataset:
         # put the images onto the same device as the model

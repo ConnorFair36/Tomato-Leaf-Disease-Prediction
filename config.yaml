@@ -1,0 +1,18 @@
+MODE: "test"
+
+DATASET:
+  WORKERS: 2
+  PREPROCESSOR: "default"
+
+TRAINING:
+  EPOCHS:
+    - 10
+    - 25
+    - 50
+  OPTIMIZER: "SGDmomentum"
+  LEARNING_RATE: 1e-4
+  MODEL_NAME: "CNN_SGD_test"
+
+INFERENCE:
+  MODEL_WEIGHTS: "src/weights/path/to/model_weights.pt"
+  DATASET: "test"

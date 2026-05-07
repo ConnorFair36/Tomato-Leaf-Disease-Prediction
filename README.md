@@ -61,13 +61,19 @@ Tomato-Leaf-Disease-Prediction/
 
 ### Training
 
->  A dedicated training script with command-line arguments is coming soon.
+To train this model, change `MODE: "train"` in config.yaml and change the parameters however you want. The model weights are automaticly stored in `src/weights` within their own folder after training.
 
-In the meantime, the training logic can be found in the project notebooks.
+```{bash}
+uv run main.py config.yaml
+```
 
 ### Inference
 
->  A dedicated inference script for running the model on the test or validation sets is coming soon.
+To run inference on an existing model, set `MODE: "inference"` in cofig.yaml and update `MODEL_WEIGHTS` to the file directory thak contains the .pt file for the model. 
+
+```{bash}
+uv run main.py config.yaml
+```
 
 ## Resources
 
